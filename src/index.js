@@ -15,7 +15,7 @@ mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser: true, useUnifiedTop
     }
 })
 
-
+console.log("Hello");
 app.get('/',(req,res)=>{
     res.send('hello')
 })

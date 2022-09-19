@@ -20,9 +20,10 @@ app.use('/',user)
 
 
 
+
 app.get('*',(req,res)=>{
     res.status(404).send("404 Page Not Found")
-})
+console.log("Hello");
 
 
 

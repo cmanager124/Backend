@@ -12,11 +12,11 @@ router.post('/login', async (req, res) => {
     try {
         const data = await users.findOne({ email: email })
         if (!data) {
-            res.status(400).json({ message: "USER NOT REGISTERED", data })
+           return res.status(400).json({ message: "USER NOT REGISTERED" })
         } else {
             bcrypt.compare(password, data.password, async function (err, result) {
                 if (err) {
-                    res.status(500).json({ message: err.message })
+                    return   res.status(500).json({ message: err.message })
                 }
                 if (result) {
                     const token=jwt.sign({
@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
                         data: data._id
                     }, process.env.SECRET);
 
-                    res.status(200).json({ message: "Success" ,token})
+                  return  res.status(200).json({ message: "Success" ,token})
                 } else {
                     res.json({ message: "Incorrect Password" })
 

@@ -26,6 +26,16 @@ router.get("/all", validateToken, async (req, res) => {
   }
 });
 
+
+router.get("/alldata", validateToken, async (req, res) => {
+  try {
+    const data = await contacts.find({ userid: req.user })
+    res.json(data);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 router.post("/add", validateToken, async (req, res) => {
   try {
     let input = Array.isArray(req.body);

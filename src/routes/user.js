@@ -9,6 +9,7 @@ router.use(express.json())
 router.post('/login', async (req, res) => {
     const { email, password } = req.body
 
+    
     try {
         const data = await users.findOne({ email: email })
         if (!data) {
